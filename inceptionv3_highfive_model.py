@@ -12,6 +12,7 @@ from keras.preprocessing import image
 from keras.models import Model
 from keras.layers import Dense, GlobalAveragePooling2D
 from keras import backend as K
+import tensorflow as tf
 
 
 def model_inceptionv3(height,width,depth,classes):
@@ -50,7 +51,7 @@ def model_inceptionv3(height,width,depth,classes):
 
 
 
-    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy', 'precision', 'recall', 'AUC'])
+    model.compile(optimizer = "adam", loss = "categorical_crossentropy", metrics = ['accuracy', tf.keras.metrics.AUC(), tf.keras.metrics.Recall(), tf.keras.metrics.Precision() ])
 
     model.summary()
 

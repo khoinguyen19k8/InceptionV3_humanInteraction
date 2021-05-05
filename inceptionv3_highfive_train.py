@@ -14,7 +14,13 @@ from keras import backend as K
 from keras.preprocessing import image
 from tempfile import mktemp
 import time
-
+from sklearn.datasets import make_classification
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import roc_curve
+from sklearn.metrics import roc_auc_score
+from matplotlib import pyplot
+import tensorflow as tf
 
 config = tf.compat.v1.ConfigProto()
 config.gpu_options.allow_growth = True
@@ -41,7 +47,7 @@ for f in fileslist:
     img = image.load_img(f, target_size=(299,299))
     print("Processed: "+str(i/length))
     img_h = image.img_to_array(img)
-    img_h /=255 #Normalize?
+    img_h /=255
     X.append(img_h)
     classes.append(img_class)
     i = i+1
@@ -53,6 +59,7 @@ Y = np.eye(number_classes, dtype='uint8')[classes]
 
 x_train, x_valtest, y_train, y_valtest = train_test_split(X, Y, test_size=0.3, random_state = 42)
 x_val, x_test, y_val, y_test = train_test_split(x_valtest, y_valtest, test_size = 0.5, random_state = 42)
+
 K.clear_session()
 
 #Load model
@@ -81,15 +88,23 @@ score = model.evaluate(x_val, y_val, verbose=0)
 
 print('Final score:', score[0])
 print('Final accuracy:', score[1])
+print("EVERYTHING: ", score)
 
 #serialise model to json
 json_string = model.to_json()
 with open("model.json", "w") as json_file:
     json_file.write(json_string)
 
+x_test, x_test_2, y_test, y_test_2 = train_test_split(X, Y, test_size=0.5)
 #Predictions
 eval_1 = model.evaluate(x_test,y_test, verbose=0)
 print("------------------------------")
 print('Test score:', eval_1[0])
 print('Test accuracy:', eval_1[1])
+print("------------------------------")
+
+eval_2 = model.evaluate(x_test_2,y_test_2, verbose=0)
+
+print('Test 2 score:', eval_2[0])
+print('Test 2 accuracy:', eval_2[1])
 print("------------------------------")
