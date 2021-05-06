@@ -23,6 +23,8 @@ from matplotlib import pyplot
 import tensorflow as tf
 import sys
 
+# Example: python training-modified.py 3
+
 config = tf.compat.v1.ConfigProto()
 config.gpu_options.allow_growth = True
 sess = tf.compat.v1.Session(config=config)
@@ -32,10 +34,12 @@ if len(sys.argv) != 2:
 
 POS_VAL = sys.argv[1]
 DATA_PATH = os.path.join("tv_human_interactions_videos", f"frames_pos_{POS_VAL}")
+ARRAY_PATH = os.path.join("preprocessed-arrays", f"frames_pos_{POS_VAL}")
+
 if not os.path.isdir(DATA_PATH):
     raise Exception("Wrong frame value!")
 # load images
-fileslist = []
+"""fileslist = []
 number_classes = 0
 for classes in os.listdir(DATA_PATH):
     number_classes = number_classes + 1
@@ -62,18 +66,30 @@ for f in fileslist:
 
 
 X = np.array(X, dtype="float32")
-Y = np.eye(number_classes, dtype="uint8")[classes] #One-hot coding
+Y = np.eye(number_classes, dtype="uint8")[classes] #One-hot coding"""
 
-print('classes shape: ', np.shape(classes))
-print('Y shape: ',Y.shape)
-#raise Exception("Bye bye")
+X = np.load(os.path.join(ARRAY_PATH, "X.npy"))
+Y = np.load(os.path.join(ARRAY_PATH, "Y.npy"))
 
-x_train, x_valtest, y_train, y_valtest = train_test_split(
-    X, Y, test_size=0.3, random_state=42
-)
-x_val, x_test, y_val, y_test = train_test_split(
-    x_valtest, y_valtest, test_size=0.5, random_state=42
-)
+print("classes shape: ", np.shape(classes))
+print("Y shape: ", Y.shape)
+
+
+# x_train, x_valtest, y_train, y_valtest = train_test_split(
+#    X, Y, test_size=0.3, random_state=42
+# )
+# x_val, x_test, y_val, y_test = train_test_split(
+#    x_valtest, y_valtest, test_size=0.5, random_state=42
+#
+# )
+
+x_train = np.load(os.path.join(ARRAY_PATH, "x_train.npy"))
+x_val = np.load(os.path.join(ARRAY_PATH, "x_val.npy"))
+x_test = np.load(os.path.join(ARRAY_PATH, "x_test.npy"))
+
+y_train = np.load(os.path.join(ARRAY_PATH, "y_train.npy"))
+y_val = np.load(os.path.join(ARRAY_PATH, "y_val.npy"))
+y_test = np.load(os.path.join(ARRAY_PATH, "y_test.npy"))
 
 K.clear_session()
 
