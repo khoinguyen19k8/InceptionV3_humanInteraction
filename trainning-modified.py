@@ -32,7 +32,7 @@ if len(sys.argv) != 2:
 
 POS_VAL = sys.argv[1]
 DATA_PATH = os.path.join("tv_human_interactions_videos", f"frames_pos_{POS_VAL}")
-if not os.isdir(DATA_PATH):
+if not os.path.isdir(DATA_PATH):
     raise Exception("Wrong frame value!")
 # load images
 fileslist = []
@@ -41,7 +41,7 @@ for classes in os.listdir(DATA_PATH):
     number_classes = number_classes + 1
     sd = os.path.join(DATA_PATH, classes)
     for files in os.listdir(sd):
-        fileslist.append(sd + files)
+        fileslist.append(os.path.join(sd, files))
 
 np.random.shuffle(fileslist)
 
@@ -62,7 +62,11 @@ for f in fileslist:
 
 
 X = np.array(X, dtype="float32")
-Y = np.eye(number_classes, dtype="uint8")[classes]
+Y = np.eye(number_classes, dtype="uint8")[classes] #One-hot coding
+
+print('classes shape: ', np.shape(classes))
+print('Y shape: ',Y.shape)
+#raise Exception("Bye bye")
 
 x_train, x_valtest, y_train, y_valtest = train_test_split(
     X, Y, test_size=0.3, random_state=42
