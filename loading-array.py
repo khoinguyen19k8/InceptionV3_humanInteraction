@@ -2,7 +2,7 @@ import tensorflow as tf
 from keras.preprocessing import image
 import os
 import numpy as np
-
+from sklearn.model_selection import train_test_split
 pos_list = [2, 3, 4, 6, 7, 8, 9, 10]
 
 for pos_val in pos_list:
@@ -30,7 +30,9 @@ for pos_val in pos_list:
     i = 1
     length = len(fileslist)
     for f in fileslist:
-        img_class = int((f.split("/")[-1]).split("_")[0])
+        
+        raw_f = r"{}".format(f)
+        img_class = int((raw_f.split(os.sep)[-1]).split("_")[0])
         # Default size for Inception is 299x299
         img = image.load_img(f, target_size=(299, 299))
         if i % 1000 == 0:

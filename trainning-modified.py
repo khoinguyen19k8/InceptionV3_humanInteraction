@@ -68,11 +68,11 @@ for f in fileslist:
 X = np.array(X, dtype="float32")
 Y = np.eye(number_classes, dtype="uint8")[classes] #One-hot coding"""
 
-X = np.load(os.path.join(ARRAY_PATH, "X.npy"))
-Y = np.load(os.path.join(ARRAY_PATH, "Y.npy"))
+#X = np.load(os.path.join(ARRAY_PATH, "X.npy"))
+#Y = np.load(os.path.join(ARRAY_PATH, "Y.npy"))
 
-print("classes shape: ", np.shape(classes))
-print("Y shape: ", Y.shape)
+#print("classes shape: ", np.shape(classes))
+#print("Y shape: ", Y.shape)
 
 
 # x_train, x_valtest, y_train, y_valtest = train_test_split(
@@ -94,7 +94,7 @@ y_test = np.load(os.path.join(ARRAY_PATH, "y_test.npy"))
 K.clear_session()
 
 # Load model
-model = model_inceptionv3(299, 299, 3, number_classes)
+model = model_inceptionv3(299, 299, 3, 4)
 
 
 # training
