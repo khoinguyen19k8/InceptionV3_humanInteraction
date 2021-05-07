@@ -16,7 +16,7 @@ metrics_arr = np.zeros(
 accuracy_auc_arr = np.zeros((9, 2))  # 9 frame values, 2 metrics(accuracy, auc)
 
 for pos_val in pos_list:
-    MODEL_PATH = os.path.join("weights-and-models", f"frames_val_{pos_val}")
+    MODEL_PATH = os.path.join("weights-and-models", f"frame_val_{pos_val}")
     ARRAY_PATH = os.path.join("preprocessed-arrays", f"frames_pos_{pos_val}")
 
     json_file = open(os.path.join(MODEL_PATH, "model.json"), "r")
