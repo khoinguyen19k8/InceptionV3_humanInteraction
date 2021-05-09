@@ -39,50 +39,6 @@ ARRAY_PATH = os.path.join("preprocessed-arrays", f"frames_pos_{POS_VAL}")
 if not os.path.isdir(DATA_PATH):
     raise Exception("Wrong frame value!")
 # load images
-"""fileslist = []
-number_classes = 0
-for classes in os.listdir(DATA_PATH):
-    number_classes = number_classes + 1
-    sd = os.path.join(DATA_PATH, classes)
-    for files in os.listdir(sd):
-        fileslist.append(os.path.join(sd, files))
-
-np.random.shuffle(fileslist)
-
-classes = []
-X = []
-i = 1
-length = len(fileslist)
-for f in fileslist:
-    img_class = int((f.split("/")[-1]).split("_")[0])
-    # Default size for Inception is 299x299
-    img = image.load_img(f, target_size=(299, 299))
-    print("Processed: " + str(i / length))
-    img_h = image.img_to_array(img)
-    img_h /= 255
-    X.append(img_h)
-    classes.append(img_class)
-    i = i + 1
-
-
-X = np.array(X, dtype="float32")
-Y = np.eye(number_classes, dtype="uint8")[classes] #One-hot coding"""
-
-#X = np.load(os.path.join(ARRAY_PATH, "X.npy"))
-#Y = np.load(os.path.join(ARRAY_PATH, "Y.npy"))
-
-#print("classes shape: ", np.shape(classes))
-#print("Y shape: ", Y.shape)
-
-
-# x_train, x_valtest, y_train, y_valtest = train_test_split(
-#    X, Y, test_size=0.3, random_state=42
-# )
-# x_val, x_test, y_val, y_test = train_test_split(
-#    x_valtest, y_valtest, test_size=0.5, random_state=42
-#
-# )
-
 x_train = np.load(os.path.join(ARRAY_PATH, "x_train.npy"))
 x_val = np.load(os.path.join(ARRAY_PATH, "x_val.npy"))
 x_test = np.load(os.path.join(ARRAY_PATH, "x_test.npy"))

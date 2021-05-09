@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os,glob
 
-pos_list = [2, 3, 4, 6, 7, 8, 9, 10]
+pos_list = list(range(2, 11))
 os.chdir("tv_human_interactions_videos")
 
 for pos_val in pos_list:
@@ -19,13 +19,6 @@ for pos_val in pos_list:
         cap = cv2.VideoCapture(videoFile)
         pos = 0
         i = 0
-        #if cap.isOpened():
-        #    cap.set(cv2.CAP_PROP_POS_FRAMES,pos)
-        #    ret, frame1 = cap.read()
-        #    if ret:
-        #        prvs = cv2.cvtColor(frame1,cv2.COLOR_BGR2GRAY)
-        #        hsv = np.zeros_like(frame1)
-        #        hsv[...,1] = 255
         
         length = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
         while(cap.isOpened()):

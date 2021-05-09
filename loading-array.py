@@ -3,7 +3,7 @@ from keras.preprocessing import image
 import os
 import numpy as np
 from sklearn.model_selection import train_test_split
-pos_list = [2, 3, 4, 6, 7, 8, 9, 10]
+pos_list = list(range(2, 11))
 
 for pos_val in pos_list:
     print(f"Start processing value {pos_val}")

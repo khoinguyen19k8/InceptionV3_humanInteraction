@@ -8,7 +8,7 @@ from sklearn.metrics import roc_auc_score
 
 MODEL_PATH = "weights-and-models"
 
-pos_list = [2, 3, 4, 6, 7, 8, 9, 10]
+pos_list = [2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 metrics_arr = np.zeros(
     (9, 4, 3)
@@ -47,7 +47,7 @@ for pos_val in pos_list:
     label_pred = np.argmax(y_pred_proba, axis=1)
     label_true = np.argmax(Y_test, axis=1)
 
-    result = classification_report(label_true, label_pred)
+    result = classification_report(label_true, label_pred, output_dict=True)
     auc_score = roc_auc_score(label_true, y_pred_proba, multi_class="ovr")
     accuracy_score = result["accuracy"]
 

@@ -22,7 +22,7 @@ if not os.path.isdir(PLOT_PATH):
 
 
 def precision_plot(colors, labels, x_range, ax):
-    for i, label, color in enumerate(zip(labels, colors)):
+    for i, (label, color) in enumerate(zip(labels, colors)):
         ax.plot(x_range, metrics_arr[x_range - 2, i, 0], label=label, color=color)
     ax.set_xlabel("Frame values")
     ax.set_ylabel("Precision")
@@ -31,7 +31,7 @@ def precision_plot(colors, labels, x_range, ax):
 
 
 def recall_plot(colors, labels, x_range, ax):
-    for i, label, color in enumerate(zip(labels, colors)):
+    for i, (label, color) in enumerate(zip(labels, colors)):
         ax.plot(x_range, metrics_arr[x_range - 2, i, 1], label=label, color=color)
     ax.set_xlabel("Frame values")
     ax.set_ylabel("Recall")
@@ -40,7 +40,7 @@ def recall_plot(colors, labels, x_range, ax):
 
 
 def f1_plot(colors, labels, x_range, ax):
-    for i, label, color in enumerate(zip(labels, colors)):
+    for i, (label, color) in enumerate(zip(labels, colors)):
         ax.plot(x_range, metrics_arr[x_range - 2, i, 2], label=label, color=color)
     ax.set_xlabel("Frame values")
     ax.set_ylabel("F1 score")

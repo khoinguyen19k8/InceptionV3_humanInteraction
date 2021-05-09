@@ -2,7 +2,7 @@ from PIL import Image
 import os, sys
 
 
-pos_list = [2, 3, 4, 6, 7, 8, 9, 10]
+pos_list = list(range(2, 11))
 for pos_val in pos_list:
     path = os.path.join('tv_human_interactions_videos', f'frames_pos_{pos_val}')
     i = 0
