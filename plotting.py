@@ -10,6 +10,11 @@ accuracy_auc_arr = np.load(
     os.path.join("preprocessed-arrays", "accuracy_auc_arr.npy")
 )  # 9 frame values, 2 metrics(accuracy, auc)
 
+macro_metrics_arr = np.load(
+    os.path.join("preprocessed-arrays", "macro_metrics_arr.npy")
+)  # 9 frame values, 3 macro-avg metrics(precision, recall, f1)
+
+
 fig, axes = plt.subplots(2, 2, figsize=(8, 8))
 colors = ["red", "blue", "green", "orange"]
 labels = ["Hand shake", "Kiss", "High five", "Hug"]
@@ -24,6 +29,9 @@ if not os.path.isdir(PLOT_PATH):
 def precision_plot(colors, labels, x_range, ax):
     for i, (label, color) in enumerate(zip(labels, colors)):
         ax.plot(x_range, metrics_arr[x_range - 2, i, 0], label=label, color=color)
+    ax.plot(x_range, macro_metrics_arr[x_range - 2, 0], label = "Macro average", color = "black")
+    #ax.plot([5, 5], [0, 1.0], 'r--')
+    #ax.annotate('Baseline model', 5, 0.5)
     ax.set_xlabel("Frame values")
     ax.set_ylabel("Precision")
     ax.set_title("Precision for each interaction")
@@ -33,6 +41,9 @@ def precision_plot(colors, labels, x_range, ax):
 def recall_plot(colors, labels, x_range, ax):
     for i, (label, color) in enumerate(zip(labels, colors)):
         ax.plot(x_range, metrics_arr[x_range - 2, i, 1], label=label, color=color)
+    ax.plot(x_range, macro_metrics_arr[x_range - 2, 1], label = "Macro average", color = "black")
+    #ax.plot([5, 5], [0, 1.0], 'r--')
+    #ax.annotate('Alexandros (2018) model', 5, 0.5)
     ax.set_xlabel("Frame values")
     ax.set_ylabel("Recall")
     ax.set_title("Recall for each interaction")
@@ -42,6 +53,9 @@ def recall_plot(colors, labels, x_range, ax):
 def f1_plot(colors, labels, x_range, ax):
     for i, (label, color) in enumerate(zip(labels, colors)):
         ax.plot(x_range, metrics_arr[x_range - 2, i, 2], label=label, color=color)
+    ax.plot(x_range, macro_metrics_arr[x_range - 2, 2], label = "Macro average", color = "black")
+    #ax.plot([5, 5], [0, 1.0], 'r--')
+    #ax.annotate('Baseline model', 5, 0.5)
     ax.set_xlabel("Frame values")
     ax.set_ylabel("F1 score")
     ax.set_title("F1 score for each interaction")
@@ -50,7 +64,8 @@ def f1_plot(colors, labels, x_range, ax):
 
 def accuracy_plot(colors, labels, x_range, ax):
     ax.plot(x_range, accuracy_auc_arr[x_range - 2, 0])
-
+    #ax.plot([5, 5], [0, 1.0], 'r--')
+    #ax.annotate('Baseline model', 5, 0.5)
     ax.set_xlabel("Frame values")
     ax.set_ylabel("Accuracy")
     ax.set_title("Model accuracy for each frame value")
