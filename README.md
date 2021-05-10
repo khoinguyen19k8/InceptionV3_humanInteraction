@@ -46,6 +46,10 @@ If you use this repository for your work, you can cite it as:
 
 MIT
 
+## Acknowledgments
+
+I am grateful for GPU and disk space support from my teammate, Jos Prinsen.
+
 ## Contact
 Nguyen Quang Khoi
 
