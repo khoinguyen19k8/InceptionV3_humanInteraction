@@ -19,10 +19,12 @@ $ git clone https://github.com/khoinguyen19k8/Inception_v3_TV_Human_Interactions
 ```
 
 ## Dependencies
-The network was build with Keras while using the TensorFlow backend.  `scikit-learn` was used as a supplementary package for doing a train-validation split. Additionally, for the grad-cam visualisations the [`keras-vis`](https://github.com/raghakot/keras-vis) toolkit was employed. Considering a correct configuration of Keras, to install the dependencies follow:
+The network was build with Keras while using the TensorFlow backend.  `scikit-learn` was used as a supplementary package for doing a train-validation split. Additionally. OpenCV was needed to handle videos and images. Matplotlib was used to plot the results.
 ```sh
 $ sudo pip install -U scikit-learn
-$ sudo pip install keras-vis
+$ sudo pip install --upgrade tensorflow
+$ sudo pip install opencv-python
+$ sudo pip install matplotlib
 ```
 
 ## References
@@ -36,7 +38,7 @@ If you use this repository for your work, you can cite it as:
 
 ## License
 
-
+MIT
 
 ## Contact
 Nguyen Quang Khoi
