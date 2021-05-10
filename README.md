@@ -34,6 +34,12 @@ This work is based on the following two papers:
 
 If you use this repository for your work, you can cite it as:
 ```sh
+@misc{Khoi2021,
+    author={Nguyen, Quang Khoi},
+    title={Frame strides experiment - Inception V3 - TV Human Interactions dataset},
+    year= 2021, 
+    url = {https://github.com/khoinguyen19k8/Inception_v3_TV_Human_Interactions_CSAI}
+}
 ```
 
 ## License
