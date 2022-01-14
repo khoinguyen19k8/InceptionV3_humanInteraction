@@ -1,7 +1,7 @@
 # Inception V3 for TV Human Interactions dataset Research Workshop CSAI
 
 ## About
-Applying Transfer Learning on Inception V3 model (weights trained on Imagenet) for the Oxford TV Human Interactions dataset. The network gets as inputs images extracted every n frames from videos. We train the model with different numbers of n. For example, we may train the model with frames 1,4,7,10,etc when n is 3.
+Applying Transfer Learning on Inception V3 model (weights trained on Imagenet) for the Oxford TV Human Interactions dataset. The network gets as inputs images extracted every n frames from videos. We train the model with different numbers of n. For example, we may train the model with frames 1,4,7,10,etc when n is 3. For detail of the data, methods, model architecture, etc; Please check the file "individual_paper_KhoiNQ_2039045_resit.pdf"
 
 <p align="center">
   <img  src="https://github.com/khoinguyen19k8/Inception_v3_TV_Human_Interactions_CSAI/blob/master/plots/AveragePlot2.png"></p>
